@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AddLinkModal } from "./components/AddLinkModal";
+import { CleanAllLinks } from "./components/CleanAllLinks";
 import { Link } from "./components/Link";
 
 export type ILink = {
@@ -19,6 +20,10 @@ function addLinkToLocalStorage(newLink: ILink): void {
 	localStorage.setItem("links", JSON.stringify([...localLinks, newLink]));
 }
 
+function deleteLinksFromLocalStorage() {
+	localStorage.removeItem("links");
+}
+
 function App() {
 	useEffect(() => {
 		setLinks(getLinksFromLocalStorage());
@@ -29,6 +34,11 @@ function App() {
 		setLinks([...links, link]);
 	}
 
+	function handleClearLocalStorage() {
+		deleteLinksFromLocalStorage();
+		setLinks([]);
+	}
+
 	const [links, setLinks] = useState<ILink[]>([]);
 
 	return (
@@ -36,6 +46,7 @@ function App() {
 			<div className="m-4 flex flex-row gap-4 items-end">
 				<h1 className="text-4xl text-indigo-700">FastLinks #WIP</h1>
 				<AddLinkModal addFunction={handleAddLink} />
+				<CleanAllLinks clearLocalStorage={handleClearLocalStorage} />
 			</div>
 			<div className="flex flex-row gap-2 m-4 flex-wrap">
 				{links.map((link: ILink, index: number) => (
