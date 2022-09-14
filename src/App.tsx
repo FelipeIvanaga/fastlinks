@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AddLinkModal } from "./components/AddLinkModal";
 import { CleanAllLinks } from "./components/CleanAllLinks";
+import { Footer } from "./components/Footer";
 import { Link } from "./components/Link";
 
 export type ILink = {
@@ -53,6 +54,7 @@ function App() {
 					<Link link={link} key={index} />
 				))}
 			</div>
+			<Footer />
 		</div>
 	);
 }
