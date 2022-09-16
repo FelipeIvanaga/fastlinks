@@ -8,7 +8,7 @@ export function Link({ link }: LinkProps) {
 	return (
 		<div>
 			<a id="test" href={link.address} target="blank">
-				<button className="bg-indigo-100 px-4 py-2 rounded-full shadow hover:shadow-lg transition-shadow">
+				<button className="bg-indigo-500 bg-opacity-80 px-4 py-2 rounded-full shadow hover:bg-opacity-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all">
 					{link.name}
 				</button>
 			</a>
